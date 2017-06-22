@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="bootstrap.css">
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="page-header">
+        <span class="h4">数据平台权限拓扑图</span>
+        <span class="pull-right btn-sm btn-warning" style="margin-left: 20px;">导出</span>
+        <span class="pull-right btn-sm btn-warning">搜索</span>
+        <input class="pull-right" style="border-radius: 3px;width:160px;"  type="search" placeholder="权限"/>
+        <input class="pull-right" style="border-radius: 3px;width:160px;"  type="search" placeholder="姓名"/>
+        <select class="pull-right" style="border-radius: 3px;width:120px;height:23px;">
+            <option>按部门查询</option>
+            <option>集团</option>
+            <option>产险</option>
+            <option>寿险</option>
+            <option>其他</option>
+        </select>
+
+    </div>
+        <div class="row">
+        <div class="col-md-10 col-xs-10 col-sm-10" >
+            <svg width="1300" height="630">
+                <!--定义三种不同颜色的箭头，id值与type值一直-->
+                <defs>
+                    <marker id="1" markerWidth="12" markerHeight="12" refx="6" refy="6" orient="auto" viewBox="0 0 12 12">
+                        <path d="M2,2 L10,6 L2,10 L6,6 L2,2" fill="#FC0405"/>
+                    </marker>
+                    <marker id="2" markerWidth="12" markerHeight="12" refx="6" refy="6" orient="auto" viewBox="0 0 12 12">
+                        <path d="M2,2 L10,6 L2,10 L6,6 L2,2" fill="#04F705"/>
+                    </marker>
+                    <marker id="3" markerWidth="12" markerHeight="12" refx="6" refy="6" orient="auto" viewBox="0 0 12 12">
+                        <path d="M2,2 L10,6 L2,10 L6,6 L2,2" fill="#0303FB"/>
+                    </marker>
+                    <!--定义一个渐变颜色，用于填充，方式显示人员的椭圆容器-->
+                    <linearGradient id="grad1" x1="0%" y1="0%" x2="0%" y2="80%">
+                        <stop offset="0%" style="stop-color:#ef7900;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#fabc00;stop-opacity:1" />
+                    </linearGradient>
+                </defs>
+            </svg>
+        </div>
+        <div class="col-md-2 col-xs-2 col-sm-2" >
+            <div class="row">
+                <div class="hint">选择要显示的部门:</div>
+                <input type="radio" name="dept" checked/>集团
+                <input type="radio" name="dept"/>产险
+                <input type="radio" name="dept"/>寿险
+            </div>
+            <div class="row">
+                <div class="hint">选择要显示的人员:</div>
+                <div id="userList">
+                    <input type="radio" name="sel" id="selectAll">选择全部</button>
+                    <input type="radio" name="sel" id="selectNone" checked>取消全部</button>
+                    <ul id="list" style="text-align: left;">
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <script src="d3.min.js"></script>
+    <script src="jquery-1.11.3.js"></script>
+    <script src="common.js"></script>
+    <script>
+         window.onload=function(){
+             getData('role.json');
+         };
+    </script>
+</body>
+</html>
